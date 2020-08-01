@@ -1,0 +1,16 @@
+{% extends "dasar.html" %}
+{% block satu %}
+<div class="container">
+<form method="POST">
+{% if alert_flag %}
+    <script>alert("Login Terlebih Dahulu")</script>  
+{% endif %}
+    {% csrf_token %}
+            <table>
+                <tr><th><label for="id_pengguna">Username:</label></th><td><ul class="errorlist"></ul><input type="text" name="pengguna" class="form-control" placeholder="Username" maxlength="50" required id="id_pengguna"></td></tr>
+                <tr><th><label for="id_sandi">Password:</label></th><td><ul class="errorlist"></ul><input type="password" name="sandi" class="form-control" placeholder="Password" maxlength="50" required id="id_sandi"></td></tr>
+            </table>
+<button type="submit" class="btn btn-sm" style="background-color: #f8b739; color: aliceblue;">Submit</button>
+</form>
+</div>
+{% endblock satu %}

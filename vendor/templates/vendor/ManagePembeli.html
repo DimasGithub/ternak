@@ -1,0 +1,55 @@
+{% extends "dasar.html" %}
+{% load humanize %}
+{% block navi %}
+{% include 'snippets/nav2.html'%}
+{% endblock navi %}
+{% block nav%}
+{% if user.is_authenticated %}
+<div class="btn-group dropleft">
+  <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{user.username}}
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="">Edit</a>
+    <a class="dropdown-item" href="{% url 'vendor:logout'%}">Logout</a>
+  </div>
+      <img src="{{user.userprofile.avatar.url}}" style="width: 40px; height: 40px; margin-left: 3px; border-radius: 50%;" alt="img">
+</div>
+{% else %}
+
+{% endif %}
+{% endblock nav %}
+</div>
+{% block satu %}
+<div class="container" style="margin-top: 10px;">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nama penerima</th>
+      <th scope="col">Nama Hewan</th>
+      <th scope="col">Jumlah Pesan</th>
+      <th scope="col">Total</th>
+      <th scope="col">Alamat</th>
+      <th scope="col">Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in list %}
+    <tr>
+      <th scope="row">{{a.id}}</th>
+      <td><a href="" style="text-decoration: none; color:black;">{{a.nama_penerima}}</a></td>
+      <td><a href="" style="text-decoration: none; color:black;">{{a.kodein.nama_hewan}}</a></td>
+      <td><a href="" style="text-decoration: none; color:black;">{{a.kodein.jumlah_pesan}}</a></td>
+      <td><a href="" style="text-decoration: none; color:black;">Rp. {{a.kodein.total_pesan|intcomma}}</a></td>
+      <td><a href="" style="text-decoration: none; color:black;">{{a.alamat_penerima}}, {{a.kota_penerima}}, {{a.provinsi_penerima}}</a></td>
+      <td><a href="{% url 'vendor:konfirmasi' a.kodein_id %}" class="btn btn-success btn-sm active" role="button">Kofirmasi</a>
+      <a href="{% url 'vendor:download' a.upload_pembayaran %}" class="btn btn-warning btn-sm active" role="button">Cek</a>
+      <a href="{% url 'vendor:cetakdokumen' a.id %}" class="btn btn-info btn-sm active" style="margin-top: 3px;" role="button">cetak</a></td>
+      
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock satu%}

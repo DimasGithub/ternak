@@ -1,0 +1,78 @@
+{% extends "dasar.html" %}
+{% block navi %}
+{% include 'snippets/nav2.html'%}
+{% endblock navi %}
+{% block nav %}
+{% if user.is_authenticated %}
+<div class="btn-group dropleft">
+  <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{user.username}}
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="">Edit</a>
+    <a class="dropdown-item" href="{% url 'vendor:logout'%}">Logout</a>
+  </div>
+      <img src="{{user.userprofile.avatar.url}}" style="width: 40px; height: 40px; margin-left: 3px; border-radius: 50%;" alt="img">
+
+</div>
+{% else %}
+
+{% endif %}
+{% endblock nav %}
+</div>
+{% block satu %}
+<div class="container" style="margin-top: 10px;">
+<form method="POST" enctype="multipart/form-data" >
+{% csrf_token %}
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{forms.nama_toko.label}}</label>
+        <div class="col-sm-10">
+        {{forms.nama_toko}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{forms.pemilik_toko.label}}</label>
+        <div class="col-sm-10">
+        {{forms.pemilik_toko}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{forms.email_toko.label}}</label>
+        <div class="col-sm-10">
+        {{forms.email_toko}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{forms.alamat.label}}</label>
+        <div class="col-sm-10">
+        {{forms.alamat}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{forms.kota.label}}</label>
+        <div class="col-sm-10">
+        {{forms.kota}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{forms.provinsi.label}}</label>
+        <div class="col-sm-10">
+        {{forms.provinsi}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{forms.no_telp.label}}</label>
+        <div class="col-sm-10">
+        {{forms.no_telp}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{forms.deskripsi_toko.label}}</label>
+        <div class="col-sm-10">
+        {{forms.deskripsi_toko}}
+        </div>
+        </div>
+        <button type="submit" class="btn btn-sm" style="background-color: #f8b739; color: aliceblue;">Submit</button>
+</form>
+</div>
+{% endblock satu %}

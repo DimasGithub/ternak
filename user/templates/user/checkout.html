@@ -1,0 +1,100 @@
+{% extends "dasar.html" %}
+{% load humanize %}
+{% block navi %}
+{% include 'snippets/nav.html'%}
+{% endblock navi %}
+
+</div>
+{% block satu %}
+<div class="container" style="margin-top: 10px;">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nama Hewan</th>
+      <th scope="col">Nama Toko </th>
+      <th scope="col">Harga Hewan</th>
+      <th scope="col">Jumlah Pesanan</th>
+      <th scope="col">Total</th>
+      <th scope="col">Status</th>
+      <th scope="col">Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in list %}
+    <tr>
+      <th scope="row">{{a.id}}</th>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:black;">{{a.nama_hewan}}</a></td>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:black;">{{a.nama_toko}}</a></td>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:black;">Rp. {{a.harga_pesan|intcomma}} /pcs</a></td>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:black;">{{a.jumlah_pesan}}</a></td>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:black;">Rp. {{a.total_pesan|intcomma}}</a></td>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:white; background-color: grey">{{a.status_pembelian}}</a></td>
+      <td><a href="{% url 'user:beli' a.kode %}" class="btn btn-success btn-sm active" role="button">Beli</a>
+      <a href="{% url 'user:ManageDelete' a.kode %}" class="btn btn-danger btn-sm active" role="button">Hapus</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+<div class="container" style="margin-top: 10px;">
+<table class="table table-bordered">
+<h2></h2>
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nama Hewan</th>
+      <th scope="col">Nama Toko </th>
+      <th scope="col">Harga Hewan</th>
+      <th scope="col">Jumlah Pesanan</th>
+      <th scope="col">Total</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in list2 %}
+    <tr>
+      <th scope="row">{{a.id}}</th>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:black;">{{a.nama_hewan}}</a></td>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:black;">{{a.nama_toko}}</a></td>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:black;">Rp. {{a.harga_pesan|intcomma}}/pcs</a></td>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:black;">{{a.jumlah_pesan}}</a></td>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:black;">Rp. {{a.total_pesan|intcomma}}</a></td>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:white; background-color: rgb(253, 152, 0)">{{a.status_pembelian}}</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+<div class="container" style="margin-top: 10px;">
+<table class="table table-bordered">
+<h2></h2>
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nama Hewan</th>
+      <th scope="col">Nama Toko </th>
+      <th scope="col">Harga Hewan</th>
+      <th scope="col">Jumlah Pesanan</th>
+      <th scope="col">Total</th>
+      <th scope="col">Status</th>
+      <th scope="col">Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in list3 %}
+    <tr>
+      <th scope="row">{{a.id}}</th>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:black;">{{a.nama_hewan}}</a></td>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:black;">{{a.nama_toko}}</a></td>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:black;">Rp. {{a.harga_pesan|intcomma}}/pcs</a></td>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:black;">{{a.jumlah_pesan}}</a></td>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:black;">Rp. {{a.total_pesan|intcomma}}</a></td>
+      <td><a href="{% url 'details:index' a.slug_toko a.slug_hewan %}" style="text-decoration: none; color:white; background-color: rgb(0, 202, 0)">{{a.status_pembelian}}</a></td>
+      <td><a href="{% url 'user:confirmDelete' a.kode %}" class="btn btn-danger btn-sm active" role="button">Hapus</a>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock satu %}

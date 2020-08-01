@@ -1,0 +1,28 @@
+{% extends "dasar.html" %}
+{% block navi %}
+{% include 'snippets/nav2.html'%}
+{% endblock navi %}
+{% block nav%}
+{% if alert_flag %}
+    <script>alert("Anda Bukan Pembeli")</script>  
+{% endif %}
+{% if user.is_authenticated %}
+<div class="btn-group dropleft">
+  <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{user.username}}
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="">Edit</a>
+    <a class="dropdown-item" href="{% url 'vendor:logout'%}">Logout</a>
+  </div>
+    <img src="{{user.userprofile.avatar.url}}" style="width: 40px; height: 40px; margin-left: 3px; border-radius: 50%;" alt="img">
+
+</div>
+{% else %}
+
+{% endif %}
+{% endblock nav %}
+</div>
+{% block satu %}
+
+{% endblock satu %}

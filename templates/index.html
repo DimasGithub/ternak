@@ -1,0 +1,57 @@
+{% extends 'dasar.html'%}
+{% load humanize %}
+{% block satu %}
+<div class="jumbotron">
+{% if user.is_authenticated %}
+    <p class="display-4">hi, {{ user.username }}</p>
+    <p class="lead">Belanja hewan ternak dengan mudah di bukaternak.com</p>
+{% else %}
+<h1 class="display-4">Selamat datang</h1>
+<p class="lead">Belanja hewan ternak dengan mudah di bukaternak.com</p>
+{% endif %}
+
+  </div>
+  <div class="d-flex justify-content-between">
+<a href="{% url 'indexCat' 'Ternak Hewan Unggas' %}" class="btn btn-outline" style="border-radius: 360px; margin-bottom: 20px; margin-left:10px; margin-right:10px; background-color: #a5a5a5; color: white;">Ternak Hewan Unggas</a>
+<a href="{% url 'indexCat' 'Ternak Hewan Kecil' %}" class="btn btn-outline" style="border-radius: 360px; margin-bottom: 20px; margin-left:10px; margin-right:10px; background-color: #a5a5a5; color: white;">Ternak Hewan Kecil</a>
+<a href="{% url 'indexCat' 'Ternak Hewan Besar' %}" class="btn btn-outline" style="border-radius: 360px; margin-bottom: 20px; margin-left:10px; margin-right:10px; background-color: #a5a5a5; color: white;">Ternak Hewan Besar</a>
+<a href="{% url 'indexCat' 'Ternak Hewan Serangga' %}" class="btn btn-outline" style="border-radius: 360px; margin-bottom: 20px; margin-left:10px; margin-right:10px; background-color: #a5a5a5; color: white;">Ternak Hewan Serangga</a>
+<a href="{% url 'indexCat' 'Ternak Hewan Verterbrata' %}" class="btn btn-outline" style="border-radius: 360px; margin-bottom: 20px; margin-left:10px; margin-right:10px; background-color: #a5a5a5; color: white;">Ternak Hewan Verterbrata</a>
+  </div>
+<div class="row row-cols-1 row-cols-md-5" style="margin-top:10px; margin-left: 10px; margin-right: 10px;"> 
+{% for a in page_obj %}
+    <div class="col mb-4" style="border-radius: 20%;">
+    <div class="card h-100" >
+      <img src="{{a.upload_foto.url}}" class="card-img-top" alt="Image">
+      <div class="card-body">
+        <h5 class="card-title"><a href="{% url 'details:index' a.slug_toko a.slug %}" style="text-decoration: none;">{{a.nama_hewan}}</a></h5>
+        <p class="card-text" style="color: #ff8b07;">Rp. {{a.harga_hewan|intcomma}}</p>
+        <p class="card-text">{{a.nama_toko_id}}</p>
+        <p>{{a.nama_toko.kota}},{{a.nama_toko.provinsi}}</p>
+        <a href="{% url 'details:index' a.slug_toko a.slug %}" class="btn btn-sm " role="button" style="background-color: #ff8b07;">Details</a>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock satu %}

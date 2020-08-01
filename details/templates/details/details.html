@@ -1,0 +1,94 @@
+{% extends "dasar.html" %}
+{% load humanize %}
+{% block satu %}
+{% if alert_flag %}
+    <script>alert("Login Terlebih Dahulu")</script>  
+{% endif %}
+{% if alert_capacity %}
+<script>alert('Hewan Sisa {{value}}')</script>
+{% endif %}
+{% if alert_error %}
+<script>alert('Pemesanan Hewan Minial 1')</script>
+{% endif %}
+<h4 style="margin: 10px;">Detail Hewan</h4>
+<form method="POST">
+    {% csrf_token %}
+    <table style="width: auto; margin-right: 10px; margin-left: 10px;" border="0">
+      <tbody>
+      <tr style="height: auto;">
+      <td rowspan="7" style="height: auto;"><img src="{{rincis.upload_foto.url}}" class="rounded float-left" alt="Image" style="width: 450px; height: 450px; margin: 30px; border-radius: 20%;">
+      </td>
+      <td style="height: auto;"><label for="nama">Nama Hewan:</label></td>
+      <td style="height: auto;"><input style="border:none;" type="text" name="nama_hewan" class="form-control" value="{{rincis.nama_hewan}}" readonly></td>
+      </tr>
+      <tr style="height: auto;">
+      <td style="height: auto;"><label for="Harga">Harga :</label></td>
+      <td style="height: auto;"><input style="border:none;" type="text" class="form-control" name="harga_pesan" value="Rp. {{rincis.harga_hewan|intcomma}}"readonly></td>
+      </tr>
+      <tr style="height: auto;">
+      <td style="height: auto;"><label for="Berat">Berat :</label></td>
+      <td style="height: auto;"><input style="border:none;" type="text" class="form-control" value="{{rincis.berat_hewan}} kg" readonly></td>
+      </tr>
+      <tr style="height: auto;">
+      <td style="height: auto;"><label for="Tinggi">Tinggi :</label></td>
+      <td style="height: auto;"><input style="border:none;" type="text" class="form-control" value="{{rincis.tinggi_hewan}} cm"readonly></td>
+      </tr>
+      <tr style="height: auto;">
+      <td style="height: auto;"><label for="deskripsi">Deskripsi :</label></td>
+      <td style="height: auto;"><p>{{rincis.deskripsi_hewan}}<p></td>
+      </tr>
+      <tr style="height: auto;">
+      <td style="height: auto;"><label for="jumlah">Jumlah:</label></td>
+      <td style="height: auto;"><input type="number" name= "jumlah" class="form-control" ></td>
+      </tr>
+      <tr style="height: auto;">
+      <td style="height: auto;"><button type="submit" class="btn btn-sm" style="background-color: #f8b739; color: aliceblue;">Pesan</button></td>
+      <td style="height: auto;"><input type="hidden" name= "nama_toko" value="{{rincis.nama_toko_id}}"></td>
+      </tr>
+      </tbody>
+      </table>
+    <!-- <div class="form-row" style="margin-top: 30px;">
+        <div class="form-group col-md-4">
+          <label for="nama">Nama Hewan:</label>
+          <input style="border:none;" type="text" name="nama_hewan" class="form-control" value="{{rincis.nama_hewan}}" readonly>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="Harga">Harga :</label>
+          <input style="border:none;" type="text" class="form-control" name="harga_pesan" value="Rp. {{rincis.harga_hewan|intcomma}}"readonly>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="Berat">Berat :</label>
+          <input style="border:none;" type="text" class="form-control" value="{{rincis.berat_hewan}} kg" readonly>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="Tinggi">Tinggi :</label>
+            <input style="border:none;" type="text" class="form-control" value="{{rincis.tinggi_hewan}} cm"readonly>
+          </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-auto">
+          
+          <p>{{rincis.deskripsi_hewan}}<p>
+          {% comment %} <input style="border:none; " type="text" class="form-control" value="{{rincis.deskripsi_hewan}}" > {% endcomment %}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="jumlah">Jumlah:</label>
+          <input type="number" name= "jumlah" class="form-control" >
+        </div>
+    </div>
+    <input type="hidden" name= "nama_toko" value="{{rincis.nama_toko_id}}">
+    <div class="form-row">
+        <div class="form-group col-md-2">
+          <button type="submit" class="btn btn-sm" style="background-color: #f8b739; color: aliceblue;">Pesan</button>
+        </div>
+    </div> -->
+</form>
+
+  <!-- DivTable.com -->
+{% endblock satu %}

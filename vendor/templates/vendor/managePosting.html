@@ -1,0 +1,55 @@
+{% extends "dasar.html" %}
+{% block navi %}
+{% include 'snippets/nav2.html'%}
+{% endblock navi %}
+{% load humanize %}
+{% block nav%}
+{% if user.is_authenticated %}
+<div class="btn-group dropleft">
+  <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{user.username}}
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="">Edit</a>
+    <a class="dropdown-item" href="{% url 'vendor:logout'%}">Logout</a>
+  </div>
+      <img src="{{user.userprofile.avatar.url}}" style="width: 40px; height: 40px; margin-left: 3px; border-radius: 50%;" alt="img">
+</div>
+{% else %}
+
+{% endif %}
+{% endblock nav %}
+</div>
+{% block satu %}
+<div class="container" style="margin-top: 10px;">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">Nama Hewan</th>
+      <th scope="col">Tinggi </th>
+      <th scope="col">Berat</th>
+      <th scope="col">Harga</th>
+      <th scope="col">Tersedia</th>
+      <th scope="col">Kategori</th>
+      <th scope="col">Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in forms %}
+    <tr>
+      <th scope="row">{{a.id}}</th>
+      <td>{{a.nama_hewan}}</td>
+      <td>{{a.tinggi_hewan}} cm</td>
+      <td>{{a.berat_hewan}} kg</td>
+      <td>Rp. {{a.harga_hewan|intcomma}}/pcs</td>
+      <td>{{a.jumlah}}</td>
+      <td>{{a.kategori}}</td>
+      <td><a href="{% url 'vendor:EditPosting' a.id%}" class="btn btn-warning btn-sm active" role="button">Edit</a>
+      <a href="{% url 'vendor:ManageDelete' a.id %}" class="btn btn-danger btn-sm active" role="button">Hapus</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock satu %}

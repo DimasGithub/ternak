@@ -1,0 +1,77 @@
+{% extends "dasar.html" %}
+{% block satu %}
+<div class="container">
+<h2 class="mb-4">{{header}}</h2>
+<p>input your biodata correctly and completely</p>
+<form method="POST" enctype="multipart/form-data" >
+{% csrf_token %}
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{forms.username.label}}</label>
+        <div class="col-sm-10">
+        {{forms.username}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{forms.email.label}}</label>
+        <div class="col-sm-10">
+        {{forms.email}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{forms.first_name.label}}</label>
+        <div class="col-sm-10">
+        {{forms.first_name}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{forms.last_name.label}}</label>
+        <div class="col-sm-10">
+        {{forms.last_name}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{forms.password1.label}}</label>
+        <div class="col-sm-10">
+        {{forms.password1}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{forms.password2.label}}</label>
+        <div class="col-sm-10">
+        {{forms.password2}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{profile_forms.dob.label}}</label>
+        <div class="col-sm-10">
+        {{profile_forms.dob}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{profile_forms.jenis_kelamin.label}}</label>
+        <div class="col-sm-10">
+        {{profile_forms.jenis_kelamin}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{profile_forms.ponsel.label}}</label>
+        <div class="col-sm-10">
+        {{profile_forms.ponsel}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{profile_forms.status.label}}</label>
+        <div class="col-sm-10">
+        {{profile_forms.status}}
+        </div>
+        </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label" >{{profile_forms.avatar.label}}</label>
+        <div class="col-sm-10">
+        {{profile_forms.avatar}}
+        </div>
+        </div>
+        <button type="submit" class="btn btn-sm" style="background-color: #f8b739; color: aliceblue;">Submit</button>
+</form>
+</div>
+{% endblock satu %}
