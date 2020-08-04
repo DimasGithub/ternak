@@ -2,6 +2,7 @@
 E-commerce website for buying and selling livestock using django framework
 <h3>The Tools Needed</h3>
 <ul>
+<li>Install Mysql</li>
 <li>Install Python</li>
 <li>Install Django V 3.0 + </li>
 <li>Download this source code</li>
