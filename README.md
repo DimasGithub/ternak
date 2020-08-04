@@ -6,7 +6,7 @@ E-commerce website for buying and selling livestock using django framework
 <li>Install Django V 3.0 + </li>
 <li>Download this source code</li>
 </ul>
-<h3>Install Django </h3>
+<h3>Install Source Code </h3>
 <ol>
 <li>First, make sure you have Python installed on your operating system</li>
 <li>Second, Install Virtualenv <code>pip install virtualenv</code></li>
