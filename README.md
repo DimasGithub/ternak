@@ -21,4 +21,5 @@ E-commerce website for buying and selling livestock using django framework
 <ol>
 <h3>Result </h3>
 
-<img src = 'https://github.com/sonadztux/sonadztux/blob/master/images/python2.png'/> 
+<img src = 'https://github.com/DimasGithub/ternak/blob/master/Screenshot%20from%202021-07-12%2011-47-43.png'/>
+<img src = 'https://github.com/DimasGithub/ternak/blob/master/Screenshot%20from%202021-07-12%2011-56-11.png'/>
