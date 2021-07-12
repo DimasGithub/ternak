@@ -19,3 +19,6 @@ E-commerce website for buying and selling livestock using django framework
 <li>Open the source code folder that has been copied, then migrate the database <code>python manage.py migration</code></li>
 <li>Finally, run the django server <code> python manage.py runserver</li>
 <ol>
+<h3>Result </h3>
+
+<img src = 'https://github.com/sonadztux/sonadztux/blob/master/images/python2.png'/> 
